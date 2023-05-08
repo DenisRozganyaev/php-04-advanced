@@ -1,9 +1,9 @@
 <?php
 require_once './vendor/autoload.php';
-
+//require_once './magic_methods.php';
 //require_once __DIR__ . '/abstract_class.php';
 //require_once __DIR__ . '/traits.php';
-require_once __DIR__ . '/overloading.php';
+//require_once __DIR__ . '/overloading.php';
 //require_once __DIR__ . '/oop_principles.php';
 //require_once __DIR__ . '/late_static_binding.php';
 //require_once './vendor/autoload.php';
@@ -19,8 +19,13 @@ require_once __DIR__ . '/overloading.php';
 //
 //dd($query->fetchAll());
 
-//docker-compose -> v1..
-//docker compose -> v2
+//require_once __DIR__ . '/src/Models/User.php';
+//require_once __DIR__ . '/src/Additional/ClassThree.php';
+//require_once __DIR__ . '/src/Additional/ClassTwo.php';
+//require_once __DIR__ . '/src/ClassOne.php';
+
+//use App\ClassOne;
+//$one = new ClassOne();
 
 
-
+require_once './try_catch.php';
