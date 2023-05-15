@@ -5,6 +5,8 @@ class Animal
 
 }
 
+class Dog extends Animal {}
+
 class Cat extends Animal
 {
 
@@ -23,9 +25,7 @@ class Milk
 
 class Cheese extends Milk
 {
-    public function feed(Human $animal)
-    {
-    }
+    public function feed(Animal $animal) {}
 }
 
 /// Developer code

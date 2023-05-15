@@ -31,4 +31,4 @@ require_once './vendor/autoload.php';
 //require_once './try_catch.php';
 //require_once './architecture/abstract3.php';
 //require_once './architecture/composition_after.php';
-require_once  './solid/o1.php';
+require_once  './solid/o5.php';
