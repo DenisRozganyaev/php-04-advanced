@@ -31,4 +31,6 @@ require_once './vendor/autoload.php';
 //require_once './try_catch.php';
 //require_once './architecture/abstract3.php';
 //require_once './architecture/composition_after.php';
-require_once  './solid/o5.php';
+//require_once  './solid/o5.php';
+//require_once __DIR__ . '/patterns/FactoryMethod/index.php';
+//require_once __DIR__ . '/patterns/AbstractFactory/index.php';
