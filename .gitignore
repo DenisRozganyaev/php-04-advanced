@@ -3,3 +3,4 @@ vendor/
 node_modules/
 design-patterns-example/
 *.zip
+.DS_Store
