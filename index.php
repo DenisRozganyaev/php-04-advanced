@@ -34,3 +34,6 @@ require_once './vendor/autoload.php';
 //require_once  './solid/o5.php';
 //require_once __DIR__ . '/patterns/FactoryMethod/index.php';
 //require_once __DIR__ . '/patterns/AbstractFactory/index.php';
+//require_once __DIR__ . '/patterns/Singleton.php';
+
+require_once __DIR__ . '/patterns/Observer/index.php';
