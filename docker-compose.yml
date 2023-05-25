@@ -11,7 +11,7 @@ networks:
 services:
   app:
     build:
-      context: docker/php
+      context: .docker/php
     restart: always
     volumes:
       - .:/var/www/html

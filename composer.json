@@ -1,11 +1,18 @@
 {
-    "name": "root/html",
-    "autoload": {
-        "psr-4": {
-            "Root\\Html\\": "src/"
-        }
+  "name": "root/html",
+  "autoload": {
+    "psr-4": {
+      "Config\\": "Config/",
+      "Core\\": "Core/",
+      "App\\": "App/"
     },
-    "require": {
-        "larapack/dd": "^1.1"
-    }
+    "files": [
+      "Config/helpers.php"
+    ]
+  },
+  "require": {
+    "larapack/dd": "^1.1",
+    "vlucas/phpdotenv": "^5.5",
+    "ext-pdo": "*"
+  }
 }
