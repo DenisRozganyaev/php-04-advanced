@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Config\Config;
 
 require_once dirname(__DIR__) . '/Config/constants.php';
@@ -13,7 +14,7 @@ try {
     $dotenv = Dotenv\Dotenv::createUnsafeImmutable(BASE_DIR);
     $dotenv->load();
 
-    \Core\Db::connect();
+    dd(User::findBy('password', 123456));
 
 } catch (PDOException $exception) {
     dd("PDOException", $exception->getMessage());
