@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 if (!session_id()) {
     session_start();
 }
