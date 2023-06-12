@@ -28,6 +28,11 @@ trait Queryable
         return $obj;
     }
 
+    static public function all(): array
+    {
+        return static::select()->get();
+    }
+
     static public function find(int $id): static|false
     {
         $query = Db::connect()->prepare("SELECT * FROM " . static::$tableName . " WHERE id = :id");
@@ -55,14 +60,16 @@ trait Queryable
      * @param array $data
      * @return int
      */
-    static public function create(array $fields): int
+    static public function create(array $fields): false|int
     {
         $params = static::prepareQueryParams($fields);
 
         $query = "INSERT INTO " . static::$tableName . " ({$params['keys']}) VALUES ({$params['placeholders']})";
         $query = Db::connect()->prepare($query);
 
-        $query->execute($fields);
+        if (!$query->execute($fields)) {
+            return false;
+        }
 
         return (int) Db::connect()->lastInsertId();
     }

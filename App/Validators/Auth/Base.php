@@ -7,12 +7,12 @@ use App\Validators\Base\BaseValidator;
 
 class Base extends BaseValidator
 {
-    public function checkEmailOnExists(string $email): bool
+    public function checkEmailOnExists(string $email, bool $eq = true, string $message = 'Email already exists!'): bool
     {
         $result = (bool)User::findBy('email', $email);
 
-        if ($result) {
-            $this->setError('email', 'Email already exists!');
+        if ($result === $eq) {
+            $this->setError('email', $message);
         }
 
         return $result;
