@@ -11,7 +11,7 @@ class SignUpValidator extends Base
 
     protected array $errors = [
         'email' => 'Email is incorrect',
-        'password' => 'Password is incorrect',
+        'password' => 'Password is incorrect. Minimum length is 8 symbols.',
     ];
 
     public function passwordConfirmation(string $pass, string $passConfirm): bool

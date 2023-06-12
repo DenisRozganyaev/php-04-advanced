@@ -1,5 +1,7 @@
 <?php
+
 use Core\Router;
+
 //
 //// notes/4/edit
 //Router::add(
@@ -48,6 +50,42 @@ Router::add(
     [
         'controller' => \App\Controllers\AuthController::class,
         'action' => 'verify',
+        'method' => 'POST'
+    ]
+);
+
+Router::add(
+    'dashboard',
+    [
+        'controller' => \App\Controllers\FoldersController::class,
+        'action' => 'index',
+        'method' => 'GET'
+    ]
+);
+
+Router::add(
+    'folders/{id:\d+}',
+    [
+        'controller' => \App\Controllers\FoldersController::class,
+        'action' => 'show',
+        'method' => 'GET'
+    ]
+);
+
+Router::add(
+    'folders/create',
+    [
+        'controller' => \App\Controllers\FoldersController::class,
+        'action' => 'create',
+        'method' => 'GET'
+    ]
+);
+
+Router::add(
+    'folders/store',
+    [
+        'controller' => \App\Controllers\FoldersController::class,
+        'action' => 'store',
         'method' => 'POST'
     ]
 );
