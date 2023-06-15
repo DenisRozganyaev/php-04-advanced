@@ -33,4 +33,14 @@ class Session
             session_destroy();
         }
     }
+
+    static public function notify(string $type, string $message)
+    {
+        $_SESSION['notify'] = compact('type', 'message');
+    }
+
+    static public function flushNotify()
+    {
+        unset($_SESSION['notify']);
+    }
 }
