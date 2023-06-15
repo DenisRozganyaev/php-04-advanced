@@ -50,7 +50,7 @@ class AuthController extends Controller
         view('auth/login', $this->getErrors($fields, $validator));
     }
 
-    public function before(string $action): bool
+    public function before(string $action, array $params = []): bool
     {
         if (in_array($action, ['login', 'register']) && Session::check()) {
             if (!empty($_SERVER['HTTP_REFERER'])) {

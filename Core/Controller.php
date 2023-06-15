@@ -6,7 +6,7 @@ use App\Validators\Base\BaseValidator;
 
 class Controller
 {
-    public function before(string $action): bool
+    public function before(string $action, array $params = []): bool
     {
         return true;
     }
