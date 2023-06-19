@@ -18,6 +18,24 @@ class NotesValidator extends BaseValidator
         'content' => 'Content should be more then 1 symbol'
     ];
 
+    const REQUEST_RULES = [
+        'folder_id' => FILTER_VALIDATE_INT,
+        'title' => array(
+            'filter' => 'is_string',
+            'flags' => FILTER_CALLBACK
+        ),
+        'content' => array(
+            'filter' => 'is_string',
+            'flags' => FILTER_CALLBACK
+        ),
+        'users' => array(
+            'filter' => FILTER_VALIDATE_INT,
+            'flags' => FILTER_REQUIRE_ARRAY,
+        ),
+        'pinned' => FILTER_VALIDATE_BOOL,
+        'completed' => FILTER_VALIDATE_BOOL
+    ];
+
     public function validate(array $fields = []): bool
     {
         $result = [
@@ -30,7 +48,7 @@ class NotesValidator extends BaseValidator
 
     public function validateFolderId(int $folderId): bool
     {
-        $result = (bool) Folder::select()
+        $result = (bool)Folder::select()
             ->where('id', '=', $folderId)
             ->whereIn('author_id', [Session::id(), 0])
             ->get();

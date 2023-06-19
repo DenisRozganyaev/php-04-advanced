@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Helpers\Session;
 use App\Models\Folder;
 use App\Models\Note;
+use App\Models\SharedNote;
+use App\Models\User;
 use App\Services\NotesService;
 use App\Validators\FoldersValidator;
 use App\Validators\NotesValidator;
@@ -18,11 +20,13 @@ class NotesController extends Controller
     }
     public function create()
     {
-        view('notes/create', ['folders' => Folder::getUserFolders()]);
+        $users = User::select()->where('id', '!=', Session::id())->get();
+
+        view('notes/create', ['folders' => Folder::getUserFolders(), 'users' => $users]);
     }
     public function store()
     {
-        $fields = filter_input_array(INPUT_POST, $_POST);
+        $fields = filter_input_array(INPUT_POST, NotesValidator::REQUEST_RULES, false);
         $validator = new NotesValidator();
 
         if (NotesService::create($validator, $fields)) {
@@ -35,10 +39,26 @@ class NotesController extends Controller
 
     public function edit(int $id)
     {
-        d(__CLASS__);
-        d(__METHOD__);
+        $users = User::select()->where('id', '!=', Session::id())->get();
+        $folders = Folder::getUserFolders();
+        $sharedUsers = SharedNote::select(['user_id'])->where('note_id', '=', $id)->pluck('user_id');
+        $note = Note::find($id);
+
+        view('notes/edit', compact('users', 'folders', 'note', 'sharedUsers'));
     }
 
-    public function update(int $id) {}
+    public function update(int $id)
+    {
+        $fields = filter_input_array(INPUT_POST, NotesValidator::REQUEST_RULES, false);
+        $validator = new NotesValidator();
+        $note = Note::find($id);
+
+        if (NotesService::update($validator, $note, $fields)) {
+            Session::notify('success', 'Note was updated!');
+            redirect("folders/{$fields['folder_id']}");
+        }
+
+        view('notes/edit', $this->getErrors($fields, $validator));
+    }
     public function destroy(int $id) {}
 }

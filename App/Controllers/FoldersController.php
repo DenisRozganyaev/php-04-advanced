@@ -12,7 +12,7 @@ class FoldersController extends \Core\Controller
     public function index()
     {
         $notes = Note::byFolder(Folder::GENERAL_FOLDER_ID);
-        $folders = Folder::getUserFolders();
+        $folders = Folder::getUserFoldersWithShared();
         $activeFolder = Folder::GENERAL_FOLDER_ID;
 
         view('pages/dashboard', compact('notes', 'folders', 'activeFolder'));
@@ -20,8 +20,8 @@ class FoldersController extends \Core\Controller
 
     public function show(int $id)
     {
-        $notes = Note::byFolder($id);
-        $folders = Folder::getUserFolders();
+        $notes = $id === Folder::SHARED_FOLDER_ID ? Note::sharedNotes() : Note::byFolder($id);
+        $folders = Folder::getUserFoldersWithShared();
         $activeFolder = $id;
 
         view('pages/dashboard', compact('notes', 'folders', 'activeFolder'));

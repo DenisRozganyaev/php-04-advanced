@@ -23,7 +23,7 @@ Router::add(
     [
         'controller' => \App\Controllers\AuthController::class,
         'action' => 'logout',
-        'method' => 'POST'
+        'method' => 'GET'
     ]
 );
 Router::add(
@@ -163,7 +163,7 @@ Router::add(
     [
         'controller' => \App\Controllers\NotesController::class,
         'action' => 'update',
-        'method' => 'GET'
+        'method' => 'POST'
     ]
 );
 
