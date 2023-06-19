@@ -13,12 +13,13 @@ class AuthController extends Controller
 {
     public function login()
     {
-        d($_SESSION);
         view('auth/login');
     }
 
     public function logout()
     {
+        Session::destroy();
+        redirect('login');
     }
 
     public function register()
